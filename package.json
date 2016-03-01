@@ -1,0 +1,21 @@
+{
+  "name": "gsmchars",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel index.js > index-es5.js && node --max-old-space-size=8192 index-es5.js"
+  },
+  "author": "Tim Ermilov <yamalight@gmail.com> (http://codezen.net)",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.6.0",
+    "babel-core": "^6.6.0",
+    "babel-preset-es2015-node": "^5.0.2",
+    "babel-preset-stage-1": "^6.5.0"
+  },
+  "dependencies": {
+    "lodash": "^4.5.1",
+    "rx": "^4.0.8"
+  }
+}
