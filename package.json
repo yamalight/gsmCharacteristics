@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel index.js > index-es5.js && node --max-old-space-size=8192 index-es5.js"
+    "start": "babel src --out-dir compiled && node --max-old-space-size=8192 compiled/index.js"
   },
   "author": "Tim Ermilov <yamalight@gmail.com> (http://codezen.net)",
   "license": "ISC",

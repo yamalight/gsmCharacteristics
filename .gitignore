@@ -2,3 +2,5 @@ node_modules
 out
 gsmCharacteristics.csv
 index-es5.js
+index.es5.js
+compiled
