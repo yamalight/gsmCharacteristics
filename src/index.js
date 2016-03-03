@@ -24,8 +24,8 @@ const lines = text
     // remove empty lines
     .filter(l => l.line.length > 0);
 // save shorts
-const SHORT_LENGTH = 10;
-const shortLines = lines.filter(l => l.line.length < SHORT_LENGTH);
+const SHORT_LENGTH = 5;
+const shortLines = lines.filter(l => l.line.length < SHORT_LENGTH).map(v => `${v.gsmid}, ${v.line}`);
 saveToFile(shortLines, './out/short.json');
 shortLines.length = 0;
 
@@ -35,13 +35,7 @@ console.log('saved short!');
 const newLines = lines.filter(l => l.line.length > SHORT_LENGTH).map(processByType);
 
 // save untransformed
-const untransformed = newLines.filter(o => o.UNTRANSFORMED).map(v => {
-    const r = {
-        ...v,
-    };
-    delete r.UNTRANSFORMED;
-    return r;
-});
+const untransformed = newLines.filter(o => o.UNTRANSFORMED).map(v => `${v.gsmid}, ${v.originalLine}`);
 saveToFile(untransformed, './out/not-processed.json');
 untransformed.length = 0;
 
