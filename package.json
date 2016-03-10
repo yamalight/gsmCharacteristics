@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel src --out-dir compiled && node --max-old-space-size=8192 compiled/index.js"
+    "compile": "babel src --out-dir compiled",
+    "start": "npm run compile && node --max-old-space-size=8192 compiled/index.js",
+    "map": "npm run compile && node --max-old-space-size=8192 compiled/mapper/index.js"
   },
   "author": "Tim Ermilov <yamalight@gmail.com> (http://codezen.net)",
   "license": "ISC",
