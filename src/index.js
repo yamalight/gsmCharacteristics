@@ -1,10 +1,15 @@
 /* eslint max-params: [2, 3] */
 /* eslint no-console: 0 */
 /* eslint complexity: [2, 11] */
-import {readFileSync, writeFileSync} from 'fs';
+import {join} from 'path';
+import {readFileSync, mkdirSync, writeFileSync} from 'fs';
 import {processByType} from './process';
 
 const saveToFile = (obj, filename) => writeFileSync(filename, JSON.stringify(obj, null, 2), 'utf8');
+
+// create output folder
+const resultPath = join(__dirname, 'out');
+mkdirSync(resultPath);
 
 // get plain text
 const text = readFileSync('./gsmCharacteristics.csv').toString();
@@ -29,7 +34,7 @@ const shortLines = lines.filter(l => l.line.length < SHORT_LENGTH).map(v => ({
     gsmid: v.gsmid,
     originalLine: v.line,
 }));
-saveToFile(shortLines, './out/short.json');
+saveToFile(shortLines, join(resultPath, 'short.json'));
 shortLines.length = 0;
 
 console.log('saved short!');
@@ -42,7 +47,7 @@ const untransformed = newLines.filter(o => o.UNTRANSFORMED).map(v => ({
     gsmid: v.gsmid,
     originalLine: v.originalLine,
 }));
-saveToFile(untransformed, './out/not-processed.json');
+saveToFile(untransformed, join(resultPath, 'not-processed.json'));
 untransformed.length = 0;
 
 console.log('saved untransformed!');
@@ -59,7 +64,7 @@ for (let i = 0; i <= pages; i++) {
         end = transformed.length - 1;
     }
     const tosave = transformed.slice(start, end);
-    saveToFile(tosave, `./out/processed_${i}.json`);
+    saveToFile(tosave, join(resultPath, `processed_${i}.json`));
     tosave.length = 0;
     console.log('saved page:', i);
 }
