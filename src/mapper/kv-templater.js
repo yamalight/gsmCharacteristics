@@ -6,10 +6,16 @@ export default (id, key, value) => {
 
     if (Array.isArray(value)) {
         value.forEach(val => {
-            result += ValueTemplate.replace(/%ID%/gm, id).replace(/%VAL%/gm, val);
+            result += ValueTemplate
+                .replace(/%ID%/gm, id)
+                .replace(/%VAL%/gm, val)
+                .replace(/%KEY%/gm, key);
         });
     } else {
-        result += ValueTemplate.replace(/%ID%/gm, id).replace(/%VAL%/gm, value);
+        result += ValueTemplate
+            .replace(/%ID%/gm, id)
+            .replace(/%VAL%/gm, value)
+            .replace(/%KEY%/gm, key);
     }
 
     return result;
