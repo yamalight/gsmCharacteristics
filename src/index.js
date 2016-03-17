@@ -8,7 +8,7 @@ import {processByType} from './process';
 const saveToFile = (obj, filename) => writeFileSync(filename, JSON.stringify(obj, null, 2), 'utf8');
 
 // create output folder
-const resultPath = join(__dirname, 'out');
+const resultPath = join(__dirname, '..', 'out');
 mkdirSync(resultPath);
 
 // get plain text
