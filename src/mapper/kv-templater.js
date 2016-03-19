@@ -1,12 +1,14 @@
 import KeyTemplate from './templates/key';
 import ValueTemplate from './templates/value';
 
+const escape = (str) => JSON.stringify(str).substring(1).substring(0, str.length);
+
 const template = (str, id, key, val) => str
-        .replace(/%ID%/gm, id)
+        .replace(/%ID%/gm, escape(id))
         .replace(/%ID_ENC%/gm, encodeURIComponent(id))
-        .replace(/%KEY%/gm, key)
+        .replace(/%KEY%/gm, escape(key))
         .replace(/%KEY_ENC%/gm, encodeURIComponent(key))
-        .replace(/%VAL%/gm, val)
+        .replace(/%VAL%/gm, escape(val))
         .replace(/%VAL_ENC%/gm, encodeURIComponent(val));
 
 export default (id, key, value) => {
