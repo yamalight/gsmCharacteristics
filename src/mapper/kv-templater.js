@@ -16,10 +16,10 @@ export default (id, key, value) => {
 
     if (Array.isArray(value)) {
         value.forEach(val => {
-            result += template(ValueTemplate, id, val, key);
+            result += template(ValueTemplate, id, key, val);
         });
     } else {
-        result += template(ValueTemplate, id, value, key);
+        result += template(ValueTemplate, id, key, value);
     }
 
     return result;
