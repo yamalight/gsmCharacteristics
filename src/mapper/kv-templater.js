@@ -9,7 +9,8 @@ const template = (str, id, key, val) => str
         .replace(/%KEY%/gm, escape(key))
         .replace(/%KEY_ENC%/gm, encodeURIComponent(key))
         .replace(/%VAL%/gm, escape(val))
-        .replace(/%VAL_ENC%/gm, JSON.stringify(val));
+        .replace(/%VAL_ENC%/gm, JSON.stringify(val))
+        .replace(/%VAL_URL%/gm, encodeURIComponent(val));
 
 export default (id, key, value) => {
     let result = template(KeyTemplate, id, key, '');

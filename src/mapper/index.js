@@ -19,7 +19,7 @@ let processedIndex = 0;
 // parse
 processed.forEach(file => {
     const json = JSON.parse(readFileSync(join(filesPath, file)).toString());
-    const res = prefixes + '\n' + json.map(obj => templater(obj)).join('\n');
+    const res = `${prefixes}\n${json.map(obj => templater(obj)).join('\n')}`;
     writeFileSync(join(resultPath, `res_${processedIndex++}.nt`), res, 'utf8');
     console.log('converted file', processedIndex);
 });

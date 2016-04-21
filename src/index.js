@@ -5,6 +5,8 @@ import {join} from 'path';
 import {readFileSync, mkdirSync, writeFileSync} from 'fs';
 import {processByType} from './process';
 
+const PAGE_SIZE = 50000;
+
 const saveToFile = (obj, filename) => writeFileSync(filename, JSON.stringify(obj, null, 2), 'utf8');
 
 // create output folder
@@ -54,7 +56,6 @@ console.log('saved untransformed!');
 
 // save transformed
 const transformed = newLines.filter(o => !o.UNTRANSFORMED);
-const PAGE_SIZE = 200000;
 const pages = Math.floor(transformed.length / PAGE_SIZE);
 console.log('total size:', transformed.length);
 for (let i = 0; i <= pages; i++) {

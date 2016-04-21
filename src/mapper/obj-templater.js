@@ -10,7 +10,6 @@ export default (object) => {
     // process all other key-value pairs
     Object.keys(object)
     .filter(key => key !== 'gsmid')
-    .filter(key => key !== 'originalLine')
     .forEach(key => {
         const value = object[key];
         result += kvTemplater(id, key, value);
